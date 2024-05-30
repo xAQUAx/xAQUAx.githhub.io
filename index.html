@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px #000;
+            color: #d30000;
+        }
+        h2 {
+            font-size: 2em;
+            margin: 20;
+            color: #d30000;
+            transition: color 0.3s;
+        }
+        h2:hover {
+            color: #333;
+        }
+        img {
+            border-radius: 50%;
+            border: 2px solid #333;
+            box-shadow: 4px 4px 10px #000;
+            width: 150px;
+            height: 150px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            font-size: 1em;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #333;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px #000;
+        }
+        button {
+            font-size: 1em;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Максим</h1>
+    <h2 id="lastName">Орлов</h2>
+    <img src="img/avatar.jpg" alt="Фото">
+    
+    <div class="container">
+        <input type="text" id="lastNameInput" placeholder="Введите новую фамилию">
+        <button onclick="changeLastName()">Изменить фамилию</button>
+        <button onclick="changeBackgroundColor()">Изменить цвет фона</button>
+    </div>
+
+    <script>
+        function changeLastName() {
+            const newLastName = document.getElementById('lastNameInput').value;
+            if (newLastName) {
+                document.getElementById('lastName').innerText = newLastName;
+            }
+        }
+
+        function changeBackgroundColor() {
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        function askAge() {
+            while (true) {
+                let age = prompt("Пожалуйста, введите ваш возраст:");
+                
+                if (age === null) {
+                    continue;
+                }
+                
+                let confirmAge = confirm("Ваш возраст " + age + " лет?");
+                
+                if (confirmAge) {
+                    alert("Спасибо!");
+                    break;
+                }
+            }
+        }
+
+        // Вызов функции для запроса возраста при загрузке страницы
+        window.onload = askAge;
+    </script>
+</body>
+</html>
